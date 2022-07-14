@@ -8,7 +8,25 @@
 import Foundation
 import Algorithms
 
-class demo {
+class Demo {
+
+    func combinations() {
+        let numbers = [10, 20, 30, 40]
+        for combo in numbers.combinations(ofCount: 2...3) {
+            print(combo)
+        }
+    }
+
+//    func product() {
+//        let months = ["January", "February", "March", "April"]
+//        let days = 1...31
+//        for (year, (month, day)) in  Algorithms.product(1900...2022, Algorithms.product(months, days)) {
+//            print("\(year)-\(month)-\(day)")
+//        }
+////        for (year, season) in Algorithms.product(1900...2022, seasons) {
+////            print("\(year): \(season)")
+////        }
+//    }
 
     /* chain */
     func chain() {
@@ -16,13 +34,12 @@ class demo {
         let name1 = ["Jane", "Elizabeth", "Mary", "Kitty"]
         let name2 = ["Daphne", "Eloise", "Francesca", "Hyacinth"]
 
-
         //for name in name1 + name2 {
         //    print(name)
         //}
         // 上と同じ効果がある
         // くっつけられる
-        for name in chain(name1, name2) {
+        for name in Algorithms.chain(name1, name2) {
             print(name)
         }
     }
@@ -115,10 +132,17 @@ class demo {
 
     // uniqueな値のみ取り出せる
     func uniqued() {
-        let allNumbers = [3, 7, 8, 8, 7, 67, 8, 7, 13, 8, 3, 7, 31]
-        let uniqueNumbers = allNumbers.uniqued().sorted()
+        let randoms = (0...1000).map { _ in Int.random(in: 0...1000) }
+//        let allNumbers = [3, 7, 8, 8, 7, 67, 8, 7, 13, 8, 3, 7, 31]
+        let set = Array(Set(randoms)).sorted()
 
-        for number in uniqueNumbers {
+        let uniqueNumbers = randoms.uniqued().sorted()
+
+//        for number in uniqueNumbers {
+//            print("\(number) is a lucky number")
+//        }
+
+        for number in set {
             print("\(number) is a lucky number")
         }
     }
@@ -155,35 +179,35 @@ class demo {
     }
 
     // すべての組み合わせを作成する
-    func product() {
-        let people = ["Sophie", "Charlotte", "Maddie", "Sennen"]
-        let games = ["Mario Kart", "Boomerang Fu"]
-
-        let allOptions = Algorithms.product(people, games)
-
-        for option in allOptions {
-            print("\(option.0) will play \(option.1)")
-        }
-
-        // 20このrandomな問題を絵sん宅
-        let range = 1...12
-        let questionCount = 20
-        let allMultiples = Algorithms.product(range, range).randomSample(count: questionCount)
-
-        for pair in allMultiples {
-            print("\(pair.0) x \(pair.1) is \(pair.0 * pair.1)")
-        }
-
-        // ネストもできる
-        let suspects = ["Colonel Mustard", "Professor Plum", "Mrs White"]
-        let locations = ["kitchen", "library", "study", "hall"]
-        let weapons = ["candlestick", "dagger", "lead pipe", "rope"]
-        let guesses = Algorithms.product(Algorithms.product(suspects, locations), weapons)
-
-        for guess in guesses {
-            print("Was it \(guess.0.0) in the \(guess.0.1) with the \(guess.1)?")
-        }
-    }
+//    func product() {
+//        let people = ["Sophie", "Charlotte", "Maddie", "Sennen"]
+//        let games = ["Mario Kart", "Boomerang Fu"]
+//
+//        let allOptions = Algorithms.product(people, games)
+//
+//        for option in allOptions {
+//            print("\(option.0) will play \(option.1)")
+//        }
+//
+//        // 20このrandomな問題を絵sん宅
+//        let range = 1...12
+//        let questionCount = 20
+//        let allMultiples = Algorithms.product(range, range).randomSample(count: questionCount)
+//
+//        for pair in allMultiples {
+//            print("\(pair.0) x \(pair.1) is \(pair.0 * pair.1)")
+//        }
+//
+//        // ネストもできる
+//        let suspects = ["Colonel Mustard", "Professor Plum", "Mrs White"]
+//        let locations = ["kitchen", "library", "study", "hall"]
+//        let weapons = ["candlestick", "dagger", "lead pipe", "rope"]
+//        let guesses = Algorithms.product(Algorithms.product(suspects, locations), weapons)
+//
+//        for guess in guesses {
+//            print("Was it \(guess.0.0) in the \(guess.0.1) with the \(guess.1)?")
+//        }
+//    }
 
     // シーケンスのスライド
     func adjacentPairs() {
